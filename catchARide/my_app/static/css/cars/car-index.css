@@ -1,0 +1,26 @@
+.car-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.car-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.car-card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.car-card h2 {
+    margin-top: 0;
+}
+
+.car-card p {
+    margin: 5px 0;
+}

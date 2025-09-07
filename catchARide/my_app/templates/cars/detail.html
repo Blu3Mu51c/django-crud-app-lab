@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="car-detail">
+    <h1>{{ car.make }} {{ car.model }}</h1>
+    <p><strong>Year:</strong> {{ car.year }}</p>
+    <p><strong>Color:</strong> {{ car.color }}</p>
+    <p><strong>Description:</strong> {{ car.description }}</p>
+    <a href="{% url 'car-update' car.id %}" class="btn">Edit</a>
+    <a href="{% url 'car-delete' car.id %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'car-index' %}" class="btn">Back to All Cars</a>
+</div>
+{% endblock %}

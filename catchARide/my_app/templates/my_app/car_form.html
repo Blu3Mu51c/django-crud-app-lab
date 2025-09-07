@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h1>{% if object %}Update Car{% else %}Add a Car{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">{% if object %}Update{% else %}Create{% endif %}</button>
+    </form>
+    <a href="{% url 'car-index' %}" class="btn">Back to All Cars</a>
+</div>
+{% endblock %}

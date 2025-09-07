@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="home-container">
+    <h1>Welcome to CatchARide</h1>
+    <p>Track, add, and explore your cars!</p>
+    <a href="{% url 'car-index' %}" class="btn">View All Cars</a>
+    <a href="{% url 'car-create' %}" class="btn">Add a Car</a>
+</div>
+{% endblock %}
