@@ -43,11 +43,6 @@ The app allows users to add cars, view a list of all cars, see detailed informat
 
 ---
 
-## License
-
-This project is created for educational purposes and is not intended for production use.
-
-
 ## Getting Started
 
 ### 1. Clone the repository
