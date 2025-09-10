@@ -1,17 +1,36 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/cars/car-index.css' %}" />
+{% endblock %}
 
 {% block content %}
-<h1>All Cars</h1>
-<div class="car-list">
+
+<section class="page-header">
+    <h1>All Cars</h1>
+    <img src="{% static 'images/car-icon1.svg' %}" alt="Car icon 1" />
+    <img src="{% static 'images/car-icon2.svg' %}" alt="Car icon 2" />
+    <img src="{% static 'images/car-icon3.svg' %}" alt="Car icon 3" />
+    <img src="{% static 'images/car-icon4.svg' %}" alt="Car icon 4" />
+</section>
+
+<section class="card-container">
     {% for car in cars %}
-    <div class="car-card">
-        <h2>{{ car.make }} {{ car.model }}</h2>
-        <p><strong>Year:</strong> {{ car.year }}</p>
-        <p><strong>Color:</strong> {{ car.color }}</p>
-        <a href="{% url 'car-detail' car.id %}" class="btn">View Details</a>
+    <div class="card">
+        <a href="{% url 'car-detail' car.id %}">
+            <div class="card-content">
+                <h2 class="card-title">{{ car.make }} {{ car.model }}</h2>
+                <p><strong>Year:</strong> {{ car.year }}</p>
+                <p><strong>Color:</strong> {{ car.color }}</p>
+                {% if car.description %}
+                <p><small>{{ car.description }}</small></p>
+                {% endif %}
+            </div>
+        </a>
     </div>
     {% empty %}
     <p>No cars found. <a href="{% url 'car-create' %}">Add one!</a></p>
     {% endfor %}
-</div>
+</section>
+
 {% endblock %}

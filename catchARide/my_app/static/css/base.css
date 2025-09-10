@@ -1,67 +1,131 @@
-/* General resets and base styling */
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+/* static/css/cars/car-detail.css */
+
+/* Section styling */
+.car-detail,
+.accessories {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1000px;
+  border-radius: 12px;
+  background: #f9f9f9;
+  box-shadow: var(--card-box-shadow);
+  border: var(--borders);
 }
 
-header {
-    background-color: #222;
-    padding: 15px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* Main car details */
+.car-detail h1 {
+  font-size: var(--font-xxl);
+  margin-bottom: 10px;
 }
 
-.header-logo-container img {
-    height: 50px;
+.car-detail p {
+  font-size: var(--font-reg);
+  margin: 5px 0;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
+/* Car action buttons */
+.car-detail a.btn {
+  margin-top: 10px;
 }
 
-nav ul li {
-    margin-left: 20px;
+.car-detail a.btn-danger {
+  background-color: var(--danger);
+  color: white;
+  border-color: var(--danger);
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
+.car-detail a.btn:hover {
+  opacity: 0.9;
 }
 
-nav ul li a:hover {
-    color: #ff9800;
+/* Accessories section */
+.accessories .subsection-title h2 {
+  font-size: var(--font-xl);
+  margin-bottom: 15px;
 }
 
-main {
-    padding: 20px 40px;
+.accessory-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 8px 15px;
-    margin: 5px 0;
-    background-color: #ff9800;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: 0.3s;
+/* Individual accessory card */
+.accessory-cards .card {
+  padding: 15px;
+  border-radius: var(--card-border-radius);
+  border: var(--borders);
+  background-color: #fff;
+  box-shadow: var(--card-box-shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.btn:hover {
-    background-color: #e68a00;
+.accessory-cards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-.btn-danger {
-    background-color: #f44336;
+.accessory-cards .card h3 {
+  font-size: var(--font-l);
+  margin: 0 0 5px 0;
 }
 
-.btn-danger:hover {
-    background-color: #d32f2f;
+.accessory-cards .card p {
+  font-size: var(--font-reg);
+  margin: 0 0 10px 0;
+}
+
+/* Accessory buttons */
+.accessory-cards .card a.btn {
+  font-size: var(--font-reg);
+  padding: 6px 12px;
+  border-radius: 6px;
+  background-color: var(--button-bg);
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.accessory-cards .card a.btn:hover {
+  background-color: var(--button-bg-hover);
+  color: var(--text-color);
+}
+
+/* Feeding / Subsection forms */
+.subsection-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subsection-content button {
+  font-size: var(--font-l);
+  padding: 8px 16px;
+  border-radius: var(--card-border-radius);
+  border: 2px solid var(--submit);
+  color: var(--submit);
+  background: var(--button-bg);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.subsection-content button:hover {
+  background: var(--submit);
+  color: white;
+}
+
+/* Responsive tweaks */
+@media only screen and (min-width: 768px) {
+  .car-detail,
+  .accessories {
+    padding: 30px;
+  }
+
+  .accessory-cards {
+    gap: 25px;
+  }
+
+  .accessory-cards .card h3 {
+    font-size: var(--font-xl);
+  }
 }

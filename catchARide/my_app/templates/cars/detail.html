@@ -1,13 +1,108 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/cars/car-detail.css' %}" />
+{% endblock %}
 
 {% block content %}
-<div class="car-detail">
-    <h1>{{ car.make }} {{ car.model }}</h1>
-    <p><strong>Year:</strong> {{ car.year }}</p>
-    <p><strong>Color:</strong> {{ car.color }}</p>
-    <p><strong>Description:</strong> {{ car.description }}</p>
-    <a href="{% url 'car-update' car.id %}" class="btn">Edit</a>
-    <a href="{% url 'car-delete' car.id %}" class="btn btn-danger">Delete</a>
-    <a href="{% url 'car-index' %}" class="btn">Back to All Cars</a>
-</div>
+  <section class="car-container">
+    <div class="car-details">
+      <h1>{{ car.make }} {{ car.model }}</h1>
+      <p>
+        <strong>Year:</strong> {{ car.year }}
+      </p>
+      <p>
+        <strong>Color:</strong> {{ car.color }}
+      </p>
+      <p>
+        <strong>VIN:</strong> {{ car.vin }}
+      </p>
+      <p>
+        <strong>Description:</strong> {{ car.description }}
+      </p>
+
+      <div class="car-actions">
+        <a href="{% url 'car-update' car.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'car-delete' car.id %}" class="btn danger">Delete</a>
+        <a href="{% url 'car-index' %}" class="btn">Back to All Cars</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="records-accessories-container">
+    <section class="service-records">
+      <div class="subsection-title">
+        <h2>Service Records</h2>
+      </div>
+
+      <h3>Add a Service Record</h3>
+      <form action="{% url 'add-service' car.id %}" method="post" class="subsection-content" autocomplete="off">
+        {% csrf_token %}
+        {{ service_form.as_p }}
+        <button type="submit" class="btn submit">Add Service</button>
+      </form>
+
+      <h3>Past Service Records</h3>
+      {% if car.servicerecord_set.all.count %}
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for record in car.servicerecord_set.all %}
+              <tr>
+                <td>{{ record.date }}</td>
+                <td>{{ record.service_type }}</td>
+                <td>{{ record.notes }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <div class="subsection-content">
+          <p>⚠️ {{ car.make }} {{ car.model }} has no service records yet!</p>
+        </div>
+      {% endif %}
+    </section>
+
+    <section class="accessories">
+      <div class="subsection-title">
+        <h2>Accessories</h2>
+      </div>
+
+      {% if car.accessories.exists %}
+        <div class="accessory-cards">
+          {% for accessory in car.accessories.all %}
+            <div class="card">
+              <div class="card-content">
+                <h3>{{ accessory.name }}</h3>
+                <p>{{ accessory.description }}</p>
+                <a href="{% url 'accessory-detail' accessory.id %}" class="btn">View</a>
+                <a href="{% url 'accessory-update' accessory.id %}" class="btn warn">Edit</a>
+                <a href="{% url 'accessory-delete' accessory.id %}" class="btn danger">Delete</a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="subsection-content">
+          <p>⚠️ No accessories added for this car yet.</p>
+        </div>
+      {% endif %}
+
+      <div class="add-accessory-form">
+        <h3>Add a New Accessory</h3>
+        <form action="{% url 'accessory-create' %}" method="post" class="subsection-content" autocomplete="off">
+          {% csrf_token %}
+          {{ accessory_form.as_p }}
+          <input type="hidden" name="car" value="{{ car.id }}" />
+          <button type="submit" class="btn submit">Add Accessory</button>
+        </form>
+      </div>
+    </section>
+  </div>
 {% endblock %}

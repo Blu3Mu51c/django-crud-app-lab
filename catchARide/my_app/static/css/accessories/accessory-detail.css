@@ -1,0 +1,56 @@
+.card {
+    position: relative;
+    width: 300px;
+    margin: 20px auto;
+    border: 2px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card-bg {
+    height: 150px;
+    background-color: #ccc; /* default if no color */
+    opacity: 0.3;
+}
+
+.card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-content h2 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+}
+
+.card-content p {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.btn {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn.warn {
+    background-color: #f0ad4e;
+    color: #fff;
+}
+
+.btn.danger {
+    background-color: #d9534f;
+    color: #fff;
+}
