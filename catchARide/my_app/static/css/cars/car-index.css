@@ -1,26 +1,38 @@
-.car-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+.card-container {
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.car-card {
-    background-color: white;
-    border-radius: 8px;
-    padding: 15px;
-    width: 250px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: 0.3s;
+.card {
+  width: 275px;
+  margin: 10px;
+  border: var(--borders);
+  box-shadow: var(--card-box-shadow);
 }
 
-.car-card:hover {
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+.card-content {
+  padding: 10px;
+  width: 100%;
 }
 
-.car-card h2 {
-    margin-top: 0;
+.usr-img {
+  width: 100%;
+  border-radius: var(--card-border-radius);
 }
 
-.car-card p {
-    margin: 5px 0;
+.card > a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.card h2 {
+  margin: 10px 0;
+  font-size: var(--font-xl);
+}
+
+.card p {
+  margin: 5px 0;
+  font-size: var(--font-reg);
 }

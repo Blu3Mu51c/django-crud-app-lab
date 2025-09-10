@@ -19,7 +19,7 @@ urlpatterns = [
     path('cars/<int:car_id>/add-service/', views.add_service, name='add-service'),
 
     # Accessories (like toys for cats)
-     path('accessories/', views.AccessoryList.as_view(), name='accessory-index'),
+    path('accessories/', views.AccessoryList.as_view(), name='accessory-index'),
     path('accessories/create/', views.AccessoryCreate.as_view(), name='accessory-create'),
     path('accessories/<int:pk>/', views.AccessoryDetail.as_view(), name='accessory-detail'),
     path('accessories/<int:pk>/update/', views.AccessoryUpdate.as_view(), name='accessory-update'),

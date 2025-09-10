@@ -1,104 +1,142 @@
-/* static/css/home.css */
-
-/* Reset and container setup */
+/* ====== Main Layout ====== */
 main {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
-  padding: 20px;
-  min-height: 80vh;
-  gap: 20px;
+  height: 100%;
 }
 
-/* Logo Section */
-.logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 400px;
-  width: 90%;
-}
-
-.cat-container img {
+main > section {
   width: 100%;
-  max-width: 300px;
-  margin-bottom: 20px;
+  padding: 10px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-/* Login / Sign up Form */
+/* Hide default logo container */
+.header-logo-container {
+  display: none;
+}
+
+/* Logo container with hover effect */
+.logo-container {
+  max-width: 375px;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+}
+
+/* Category container */
+.cat-container {
+  width: 80%;
+}
+
+/* ====== Login Form ====== */
 .login {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 90%;
-  max-width: 400px;
-  padding: 20px;
-  border: var(--borders);
+  width: 80%;
+  max-width: 450px;              /* slightly bigger form */
+  padding: 25px 20px;            /* more spacing inside */
+  background-color: #f0f4ff;     /* soft blue card */
   border-radius: var(--card-border-radius);
-  box-shadow: var(--card-box-shadow);
-  background-color: var(--button-bg);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.login:hover {
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+  transform: translateY(-2px);
 }
 
 .login h1 {
-  font-size: clamp(3rem, 4vw, 4.5rem);
-  margin: 0 0 10px 0;
+  font-size: clamp(3.2rem, 3vw, 4.8rem);
+  margin: 10px 0 20px;
+  color: #1f40af;               /* darker blue heading */
   text-align: center;
 }
 
+.login > p {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 14px 0 0;
+}
+
+/* Form labels */
 .login label {
   font-size: var(--font-reg);
-  margin-top: 10px;
-  align-self: flex-start;
-}
-
-.login input {
-  width: 100%;
-  padding: 6px 8px;
-  font-size: var(--font-l);
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.login .btn {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  font-size: var(--font-l);
-  border-radius: 6px;
-  border: 2px solid var(--submit);
-  color: var(--submit);
-  background-color: var(--button-bg);
-  cursor: pointer;
+  margin-bottom: 6px;
+  color: #333;
   font-weight: 600;
 }
 
-.login .btn:hover {
-  background-color: var(--button-bg-hover);
+/* Inputs */
+.login input {
+  font-size: var(--font-l);
+  padding: 8px 12px;
+  margin-bottom: 14px;
+  border: 1px solid #9bb0ff;
+  border-radius: var(--card-border-radius);
+  transition: all 0.2s ease;
 }
 
-/* Responsive adjustments */
-@media (min-width: 768px) {
+.login input:focus {
+  outline: none;
+  border-color: #6875f5;
+  box-shadow: 0 0 8px rgba(104, 117, 245, 0.4);
+  background-color: #eef2ff;
+}
+
+/* Buttons */
+.login .btn {
+  align-self: flex-end;
+  margin-right: 0;
+  margin-top: 16px;
+  padding: 10px 20px;
+  background-color: #6875f5;
+  color: #fff;
+  border: none;
+  border-radius: var(--card-border-radius);
+  cursor: pointer;
+  font-size: var(--font-l);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.login .btn:hover {
+  background-color: #505dc8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ====== Responsive ====== */
+@media only screen and (min-width: 768px) {
   main {
-    flex-direction: row;
     justify-content: space-around;
-    align-items: flex-start;
   }
 
-  .logo-container {
+  main > section {
     width: 40%;
-    max-width: 500px;
   }
 
   .login {
-    width: 40%;
+    border: var(--borders);
+    padding: 30px 25px;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-box-shadow);
+    width: 100%;
   }
-}
 
-@media (min-width: 1024px) {
-  main {
-    gap: 40px;
+  .logo-container {
+    max-width: 520px;
   }
 }
