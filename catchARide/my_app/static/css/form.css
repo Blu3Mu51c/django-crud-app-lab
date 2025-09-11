@@ -14,7 +14,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 420px;      /* limit form width */
   margin: 20px auto;     /* center it horizontally and give vertical spacing */
   padding: 25px;         /* space inside the form */
   background-color: #fff; /* subtle card background */
